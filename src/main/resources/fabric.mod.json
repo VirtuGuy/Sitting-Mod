@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "sittingmod",
+	"version": "${version}",
+	"name": "VirtuGuy's Sitting Mod",
+	"description": "A mod where you can sit!",
+	"authors": [
+		"Me!"
+	],
+	"license": "MIT",
+	"icon": "assets/sittingmod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.virtuguy.SittingMod"
+		],
+		"client": [
+			"net.virtuguy.client.SittingModClient"
+		]
+	},
+	"mixins": [
+		"sittingmod.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.3",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*",
+		"fabric-key-binding-api-v1": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
