@@ -8,11 +8,12 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
+import java.util.Objects;
+
 public class SitEntity extends Entity {
     public SitEntity(EntityType<Entity> type, World world) {
         super(type, world);
         setNoGravity(true);
-        noClip = true;
     }
 
     @Override
@@ -21,7 +22,7 @@ public class SitEntity extends Entity {
 
         // Discards the sit entity if no player is sitting
         if (!getWorld().isClient) {
-            if (!hasPassengers())
+            if (!hasPassengers() || Objects.requireNonNull(getFirstPassenger()).doesNotCollide(0f, 0.1f, 0f))
                 discard();
         }
     }

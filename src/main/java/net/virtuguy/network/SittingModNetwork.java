@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import net.virtuguy.SittingMod;
-import net.virtuguy.client.SitHandler;
+import net.virtuguy.handler.SitHandler;
 
 public class SittingModNetwork {
     // Packet ids
