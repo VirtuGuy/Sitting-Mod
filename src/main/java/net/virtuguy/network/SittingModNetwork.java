@@ -2,14 +2,10 @@ package net.virtuguy.network;
 
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.World;
 import net.virtuguy.SittingMod;
 import net.virtuguy.client.SitHandler;
-import net.virtuguy.entity.ModEntities;
-import net.virtuguy.entity.SitEntity;
 
 public class SittingModNetwork {
     // Packet ids
