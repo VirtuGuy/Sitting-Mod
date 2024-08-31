@@ -1,2 +1,2 @@
-# Sitting Mod
- A Minecraft mod where you can sit down!
+# VirtuGuy's Sitting Mod
+ The VirtuGuy's Sitting Mod is a Minecraft mod I made that allows you to sit aNyWhErE. The reason for this mod's creation was to test myself at Java programming (Java's pretty damn scary ngl). This mod works for multiplayer and has no problems from what I know. If there are any issues, please report them or fix them yourself (if you want of course). To sit down or stand up, press Z while on the ground. Z doesn't have to be the key for sitting down as you can change it in the keybinds menu of Minecraft.
