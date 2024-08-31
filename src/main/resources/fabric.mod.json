@@ -5,7 +5,7 @@
 	"name": "VirtuGuy's Sitting Mod",
 	"description": "A mod where you can sit!",
 	"authors": [
-		"Me!"
+		"VirtuGuy"
 	],
 	"license": "MIT",
 	"icon": "assets/sittingmod/icon.png",
@@ -27,8 +27,5 @@
 		"java": ">=21",
 		"fabric-api": "*",
 		"fabric-key-binding-api-v1": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }
