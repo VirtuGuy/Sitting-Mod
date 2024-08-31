@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
+import net.virtuguy.client.SitHandler;
 import net.virtuguy.entity.ModEntities;
 import net.virtuguy.entity.SitEntity;
 import net.virtuguy.network.SitPayload;
@@ -28,26 +29,7 @@ public class SittingMod implements ModInitializer {
 		// Initializes the mod entities
 		ModEntities.initialize();
 
-		// Receives the player sit payload
-		ServerPlayNetworking.registerGlobalReceiver(SitPayload.ID, (payload, context) -> {
-			boolean sit = payload.sit();
-			PlayerEntity player = context.player();
-			World world = player.getWorld();
-
-			if (sit) {
-				if (player.isOnGround()) {
-					SitEntity sitEntity = (SitEntity) ModEntities.SIT_ENTITY.create(world);
-					assert sitEntity != null;
-					sitEntity.setPosition(player.getPos());
-					sitEntity.setYaw(player.getYaw());
-
-					world.spawnEntity(sitEntity);
-					player.startRiding(sitEntity);
-				}
-			} else {
-				if (player.hasVehicle() && Objects.requireNonNull(player.getVehicle()).getClass() == SitEntity.class)
-					player.stopRiding();
-			}
-		});
+		// Handles the server payloads
+		SittingModNetwork.handleServerPayloads();
 	}
 }

@@ -5,9 +5,13 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.entity.player.PlayerEntity;
 import net.virtuguy.SittingMod;
+import net.virtuguy.entity.SitEntity;
 import net.virtuguy.network.SitPayload;
 import org.lwjgl.glfw.GLFW;
+
+import java.util.Objects;
 
 public class KeyHandler {
     // KeyBinds
@@ -19,27 +23,19 @@ public class KeyHandler {
     ));
 
     // Sitting
-    static boolean sitting = false;
     static boolean pressingSitKey = false;
-
-    // Toggles the sitting position
-    private static void toggleSit() {
-        sitting = !sitting;
-        ClientPlayNetworking.send(new SitPayload(sitting));
-    }
 
     public static void initialize() {
         SittingMod.LOGGER.info("SittingMod Key Handler initialized!");
 
         // Registers the end client tick event for sitting
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (client.player != null) {
+            PlayerEntity player = client.player;
+            if (player != null) {
                 if (SIT_KEY.isPressed() && !pressingSitKey) {
                     pressingSitKey = true;
-                    sitting = client.player.hasVehicle();
-                    toggleSit();
+                    SitHandler.setSitting(!SitHandler.isSitting(player), null);
                 }
-
                 if (!SIT_KEY.isPressed() && pressingSitKey)
                     pressingSitKey = false;
             }

@@ -13,6 +13,7 @@ public class ModEntities {
             Registries.ENTITY_TYPE,
             Identifier.of(SittingMod.MOD_ID, "sit_entity"),
             EntityType.Builder.create(SitEntity::new, SpawnGroup.MISC)
+                    .disableSummon()
                     .passengerAttachments(0f)
                     .build()
     );
